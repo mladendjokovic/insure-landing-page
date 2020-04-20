@@ -100,7 +100,9 @@ nav ul li a:hover:not(.nav-link) {
     background: transparent;
     padding: 10px 20px;
     font-size: 16px;
+    border: 1px solid var(--light-gray);
     text-transform: uppercase;
+    cursor: pointer !important;
 }
 .intro-container::before, .intro-container::after {
     content: "";
@@ -145,7 +147,7 @@ main > h1 {
     align-items: center;
     padding: 50px 0;
     color: var(--light-gray);
-    margin: 100px auto;
+    margin: 100px auto 150px;
     height: 250px;
 }
 footer {
@@ -297,6 +299,9 @@ footer {
     }
 }
 @media only screen and (max-width: 660px) {
+    body {
+        overflow-x: hidden;
+    }
     .main-section, .footer-information,.footer-social-media {
         display: flex;
         flex-direction: column;
@@ -309,8 +314,11 @@ footer {
     main>h1 {
         text-align: center;
     }
+    .main-section {
+        margin: 100px auto 50px;
+    }
     .container {
-        margin-bottom: 25px;
+        height: 250px;
     }
     .footer-social-media {
         justify-content: center;
@@ -330,19 +338,24 @@ footer {
         cursor: pointer;
         display: none;
     }
+    nav {
+        z-index: 2;
+    }
     nav ul {
         position: absolute;
-        top: 67px;
+        top: 10vh;
         right: 0;
         /* left: 0; */
-        width: 70%;
-        min-height: 200px;
-        height: 90vh;
+        /* width: 70%; */
+        /* min-height: 200px; */
+        height: 0;
         padding-top: 30px;
         background: url("../images/bg-pattern-mobile-nav.svg") bottom no-repeat;
         background-color: var(--verydark-violet);
-        transform: translateX(100%);
-        transition: all 0.5s;
+        /* transform: translateX(-100%); */
+        transition: all 0.2s;
+        opacity: 0;
+        pointer-events: none;
     }
     nav ul li {
         display: block;
@@ -356,8 +369,12 @@ footer {
         margin:0 20px ;
     }
     .open {
+        /* transform: translateX(0); */
         z-index: 2;
-        transform: translateX(0);
+        height: 90vh;
+        width: 70%;
+        pointer-events: all;
+        opacity: 1;
     }
     .display-none {
         display: none;
@@ -373,9 +390,12 @@ footer {
         background-color: var(--light-gray) !important;
         color: var(--verydark-violet) !important;
     }
+    .how-we-work {
+        margin: 50px auto 100px;
+    }
 }
 /* Nemoj zaboraviti da dodas js */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
     .intro-desktop-img {
         display: none;
     }
@@ -385,7 +405,10 @@ footer {
         width: 100%;
     }
     nav ul {
-        width: 100%;
         left: 0;
+        right: 0;
+    }
+    .open {
+        width: 100%;
     }
 }
